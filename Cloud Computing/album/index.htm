@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>album</title>
+	<!--<script type="text/javascript" src="js/vue.js"></script>-->
+<!-- 	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.css"> -->
+	<!--rel 属性指示被链接的文档是一个样式表-->
+	<!--<link rel="stylesheet" type="text/css" href="css/main.css">
+	<link rel="stylesheet" type="text/css" href="css/font-awesome.css">
+	<link rel="stylesheet" type="text/css" href="css/button.css">-->
+
+
+</head>
+<body>
+	<div id="app">
+		<h1>{{app_name}}</h1>
+		<hr>
+
+		<h2>上传：</h2>
+		<div class="image-uploaders">
+			<image-uploader
+				v-bind:mainkey="1"
+				v-on:news3imageurl="NewS3ImageUrl"
+				
+			></image-uploader>
+		</div>
+	</div>
+
+</body>
+<!--<script type="text/javascript" src="js/axios.js"></script>
+<script type="text/javascript" src="js/lodash.js"></script>-->
+<script type="text/javascript" src="index.js"></script>
+
+</html>

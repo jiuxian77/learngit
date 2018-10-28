@@ -2,11 +2,8 @@
 var fs = require('fs');
 var express = require('express');
 var multer  = require('multer')
-var http = require('http');
 var app = express();
 var upload = multer({ dest: 'upload/' });
-
-//var server = http.createServer(app);
 
 
 //https://www.cnblogs.com/chyingp/p/express-multer-file-upload.html
@@ -21,6 +18,11 @@ var upload = multer({ dest: 'upload/' });
 //浏览器调用 upload.single()
 //服务器去检查自己名下的地址(upload)与表单上传的服务器地址(upload)是否一致
 //一致后，把上传图片放到/upload下。服务器说 请把你要加载的东西传过来 ret_code: '0'
+let kkk1,kkk2;
+app.get('/pic', function(req, res, next) {
+	var m = require('./JsTest.js');
+	m.show(kkk1, kkk2, res, req)
+});
 app.post('/upload', upload.single('logo'), function(req, res, next){
 	//浏览器向我(服务器)发req 
 	//我(服务器)向浏览器发 res
@@ -29,12 +31,15 @@ app.post('/upload', upload.single('logo'), function(req, res, next){
 	// next 给中间件用
 //  console.log(req.file);
     var fileFormat = (req.file.originalname);
-    var filedestination = (req.file.destination);
-    var filename =  (req.file.filename);
+    kkk1 = (req.file.destination);
+    kkk2 =  (req.file.filename);
     var m = require('./JsTest.js');
-    m.sendtoS3(fileFormat, destination, filename);
-    res.send({ret_code: '0'});
-  
+    m.sendtoS3(fileFormat, filedestination, filename);
+	var m = require('./JsTest.js');
+	var form = fs.readFileSync('./upload.html', {
+		encoding: 'utf8'
+	});
+	res.send(form);
 });
 
 
@@ -51,6 +56,4 @@ app.get('/form', function(req, res, next){
 //	我(服务器)向浏览器发的res
     res.send(form);
 });
-
 app.listen(8080);
-//server.listen(8080);

@@ -1,4 +1,4 @@
-function sendtoS3(name){
+function sendtoS3(name, destination, filename){
 	var AWS = require('aws-sdk');
 	var uuid = require('node-uuid');
 	var fs = require('fs');
@@ -10,7 +10,7 @@ function sendtoS3(name){
 	var keyName = name;
 	
 	// Read in the file, convert it to base64, store to S3
-	fs.readFile(name, function (err, data) {
+	fs.readFile(destination+filename, function (err, data) {
 	  if (err) { throw err; }
 	
 	  s3.putObject({

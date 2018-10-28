@@ -29,8 +29,10 @@ app.post('/upload', upload.single('logo'), function(req, res, next){
 	// next 给中间件用
 //  console.log(req.file);
     var fileFormat = (req.file.originalname);
+    var filedestination = (req.file.destination);
+    var filename =  (req.file.filename);
     var m = require('./JsTest.js');
-    m.sendtoS3(fileFormat);
+    m.sendtoS3(fileFormat, destination, filename);
     res.send({ret_code: '0'});
   
 });

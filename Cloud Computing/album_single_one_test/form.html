@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>文件上传表单</title>
+	</head>
+
+	<body>
+		<h3>文件上传：</h3> 选择一个文件上传: <br />
+		<!--必需的 action 属性规定当提交表单时，向何处发送表单数据。-->
+		<form action="/upload" method="post" enctype="multipart/form-data">
+			<h2>单图上传</h2>
+    			<input type="file" name="logo">
+				<input type="submit" value="提交">
+		</form>
+	</body>
+
+</html>

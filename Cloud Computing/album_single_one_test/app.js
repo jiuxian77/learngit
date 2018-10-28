@@ -2,9 +2,12 @@
 var fs = require('fs');
 var express = require('express');
 var multer  = require('multer')
-
+var http = require('http');
 var app = express();
 var upload = multer({ dest: 'upload/' });
+
+//var server = http.createServer(app);
+
 
 //https://www.cnblogs.com/chyingp/p/express-multer-file-upload.html
 //https://cnodejs.org/topic/564f32631986c7df7e92b0db
@@ -47,4 +50,5 @@ app.get('/form', function(req, res, next){
     res.send(form);
 });
 
-app.listen(3000);
+app.listen(8080);
+//server.listen(8080);
